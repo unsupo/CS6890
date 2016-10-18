@@ -1,0 +1,86 @@
+%https://www.sharelatex.com/project/57ffbacdeb4ba12b0ccddd52
+\title{Notes}
+\author{unsupo }
+\date{October 2016}
+
+\documentclass{article}
+\usepackage[margin=0.2in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{multicol}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\graphicspath{{images/}}
+
+\begin{document}
+   \hspace{-1cm} %can be used to adjust margins
+   %\begin{minipage}{0.5\textwidth}
+   \begin{multicols}{2}
+      \begin{center}\LARGE\textbf{Cancer}\end{center}
+      \scriptsize
+      \begin{itemize}
+         \item Second most common cause of death
+         \item Avascular Tumors
+         \begin{itemize}
+            \item tumors without blood vessels
+         \end{itemize}
+         \item necrotic core
+         \begin{itemize}
+            \item allows visibility in x-rays and mammograms
+         \end{itemize}
+      \end{itemize}
+      \begin{center}\large\textbf{Development of the Necrotic Core}\end{center}
+      \includegraphics[scale=.65]{simple} %[scale=.5, angle=4]{}
+      \scriptsize \tab 4 Different Cell States being tracked
+      \begin{itemize}
+         \item \textbf{Proliferating(Blue)}
+         \begin{itemize}
+            \item Healthy growing cell.  Grows by consuming glucose.  Once a size is reached they divide into two other proliferating cells.
+         \end{itemize}
+      \end{itemize}
+      \begin{itemize}
+         \item \textbf{Stasis(Green)}
+         \begin{itemize}
+            \item Cell state with not enough glucose to grow, but enough to continue to live and function.  Cells don't divide or change in size.
+         \end{itemize}
+      \end{itemize}
+      \begin{itemize}
+         \item \textbf{Necrotic(Yellow)}
+         \begin{itemize}
+            \item Not enough glucose for the cell to survive.  Cell starves and as a result its size decreases
+         \end{itemize}
+      \end{itemize}
+      \begin{itemize}
+         \item \textbf{Calcified(Red)}
+         \begin{itemize}
+            \item The dead remains of a cell.  Have increased adhesion to each other which form clumps in center of tumor.  Very small size.
+         \end{itemize}
+      \end{itemize}
+      Proliferating cells turn into stasis then into necrotic then into calcified cells as glucose decreases and as glucose increases they may go back into the previous state except for calcified which are dead and can't come back to life.
+      \begin{center}\large\textbf{Model Developed using the BioCellion Framework}\end{center}
+      \includegraphics[scale=.75]{complex} %[scale=.5, angle=4]{}
+      %\end{minipage}%
+      %\begin{minipage}{0.5\textwidth}
+      \scriptsize
+      This model was to test the new BioCellion framework and establish its value.  High performance computing across many nodes in a cluster without worrying about parallelizing the model.
+      \begin{center}\large\textbf{Model Implementation}\end{center}
+      \includegraphics[scale=.65]{graph} %[scale=.5, angle=4]{}
+      \tab Model begins with single proliferating cell in glucose rich environment.  Tumor grows and consumes glucose and the cell starts to move into the other states.  Domain is fixed size and no other sources of glucose exist other than the initial amount causing all the glucose to be consumed and eventually all cells become calcified.
+
+      \tab Goal was to get a layered tumor with each cell type in a layer.  Cell ty!pe changes glucose consumption and size.
+      \begin{center}\large\textbf{Results}\end{center}
+      \tab The graph shows the grow curves of each cell type in a successful simulation.  The 3 humps indicate the different cell types eventually all starving and becoming calcified.  The center cells transition quicker than the outer cells due to the glucose being consumed there already.
+
+      \tab Once the model worked they tested it with a lot of different initial glucose levels.  Total number of cells is linearly related to the initial glucose levels.
+      \begin{center}\large\textbf{Future Work}\end{center}
+      \tab The model hasn't added much to the knowledge of tumors, but this laid the groundwork for more complex simulation.
+      Some facets to add to this model include
+      \begin{itemize}
+         \item Blood cells supply nutrients for the tumor to grow beyond original amount.
+         \item Oxygen an important nutrient affecting when cell types change
+         \item Apoptosis or programmed cell death.  Not all cells starve to death some intentionally die leaving different remains to that of necrosis death.
+      \end{itemize}
+   \end{multicols}
+\end{document}
+
